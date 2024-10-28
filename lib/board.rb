@@ -1,21 +1,31 @@
 class Board
   def draw_board
+=begin
     board_array = [["x1", "x2", "x3"], ["y1", "y2", "y3"], ["z1", "z2", "z3"]]
   
     board_array.each do |row|
+      
       row.each_with_index do |cell, index|
         if index == 2
           print cell
         else
           print cell + " |"
         end
+        
       end
       puts 
       
     end
+=end
   end
+
+  puts row = ["   " "|" "   " "|" "   "]
+  puts separator = "-----------"
+  puts row
+  puts separator
+  puts row
 end
 
- new_board = Board.new
+new_board = Board.new
 
- new_board.draw_board
+new_board.draw_board
