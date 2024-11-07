@@ -5,7 +5,7 @@ class Board
   
     board_array.each_with_index do |row, index|
       if index == 1 || index == 2
-        puts "_______________"
+        puts "_____________"
       end
       row.each_with_index do |cell, index_2|
         if index_2 == 2
