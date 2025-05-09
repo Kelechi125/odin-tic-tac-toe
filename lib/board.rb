@@ -1,7 +1,7 @@
 class Board
   def draw_board
 
-    board_array = [["x1", "x2", "x3"], ["y1", "y2", "y3"], ["z1", "z2", "z3"]]
+    board_array = [[" 1", " 2", " 3"], [" 4", " 5", " 6"], [" 7", " 8", " 9"]]
   
     board_array.each_with_index do |row, index|
       if index == 1 || index == 2
