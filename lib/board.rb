@@ -1,11 +1,12 @@
 class Board
-  def draw_board
+  def initialize
+    @board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+  end
 
-    board_array = [[" 1", " 2", " 3"], [" 4", " 5", " 6"], [" 7", " 8", " 9"]]
-  
-    board_array.each_with_index do |row, index|
-      if index == 1 || index == 2
-        puts "_____________"
+  def draw_board
+    @board.each_with_index do |row, index|
+      if index > 0
+        puts "-----------"
       end
       row.each_with_index do |cell, index_2|
         if index_2 == 2
@@ -13,7 +14,6 @@ class Board
         else
           print cell + " | "
         end
-        
       end
       puts 
     end
