@@ -1,4 +1,6 @@
 # Want the program to ask the players for their names
+# Each player should have the ability to select a spot on the board
+
 
 class Player
   attr_accessor :name
@@ -12,9 +14,11 @@ puts "Player 1, please enter your name."
 name = gets.chomp
 player_one = Player.new(name)
 
-puts "Player 1, please select a symbol: X or O."
-def select_symbol(letter)
-  symbol_one = letter
+#Player 1 will select their symbol
+#Function will automatically assign Player 2's symbol
+#based on Player 1's selection
+def select_symbol()
+  letter = gets.chomp
 
   if letter == "X" || "x"
     symbol_one = "X"
@@ -28,6 +32,10 @@ def select_symbol(letter)
   #symbol_two is Player 2's symbol
   return symbol_one, symbol_two
 end
+
+puts "Player 1, please select a symbol: X or O."
+
+select_symbol()
 
 puts "Player 2, please enter your name."
 name_two = gets.chomp
