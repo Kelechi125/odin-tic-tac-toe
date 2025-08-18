@@ -9,37 +9,23 @@ player_one = Player.new(name)
 #Function will automatically assign Player 2's symbol
 #based on Player 1's selection
 
-=begin
-def select_symbol()
-  letter = gets.chomp
-
-  if letter == "X" || letter == "x"
-    symbol_one = "X"
-    symbol_two = "O"
-  elsif letter == "O" || letter == "o"
-    symbol_one = "O"
-    symbol_two = "X"
-  elsif letter != "X" || letter != "x" || letter != "O" || letter != "o"
-    puts "Try again!"
-  end
-
-  #symbol_one is Player 1's symbol
-  #symbol_two is Player 2's symbol
-  return symbol_one, symbol_two
-end
-=end
-
-loop do
+def select_symbol
   puts "Player 1, please select a symbol: X or O."
+  return gets.chomp.upcase
+end
 
-  symbol = gets.chomp
+symbol = select_symbol()
 
-  if symbol != "X" || symbol != "x" || symbol != "O" || symbol != "o"
-    puts "Try again!"
-  elsif symbol == "X" || symbol == "x"
+def assign_symbol(symbol)
+
+  until symbol == "X" || symbol == "O" do
+    symbol = select_symbol()
+  end
+
+  if symbol == "X"
     symbol_one = "X"
     symbol_two = "O"
-  elsif symbol == "O" || symbol == "o"
+  elsif symbol == "O"
     symbol_one = "O"
     symbol_two = "X"
   end
@@ -47,9 +33,8 @@ loop do
   return symbol_one, symbol_two
 end
 
+assign_symbol(symbol)
 
-
-# select_symbol()
 
 # I need to figure out how to handle when Player 1 puts anything other
 # than "X" or "O" as their symbol. I want the select_symbol method
