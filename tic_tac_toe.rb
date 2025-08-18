@@ -23,17 +23,14 @@ def assign_symbol(symbol)
   end
 
   if symbol == "X"
-    symbol_one = "X"
-    symbol_two = "O"
+    return ["X", "O"]
   elsif symbol == "O"
-    symbol_one = "O"
-    symbol_two = "X"
+    return ["O", "X"]
   end
-
-  return symbol_one, symbol_two
 end
 
-assign_symbol(symbol)
+official_symbols = assign_symbol(symbol)
+# puts symbol
 
 
 # I need to figure out how to handle when Player 1 puts anything other
@@ -48,7 +45,7 @@ player_two = Player.new(name_two)
 
 
 puts "Hello #{player_one.name} and #{player_two.name}!"
-puts "#{player_one.name} is #{symbol_one}, and #{player_two.name} is #{symbol_two}."
+puts "#{player_one.name} is #{official_symbols[0]}, and #{player_two.name} is #{official_symbols[1]}."
 puts "Let's start the game!"
 
 Board.new.draw_board
