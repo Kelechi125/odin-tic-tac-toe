@@ -1,4 +1,6 @@
-require_relative 'lib/player'
+require 'pry-byebug'
+
+# require_relative 'lib/player'
 
 class Board
   attr_reader :board
@@ -33,10 +35,12 @@ class Board
     end
   end
 
-  def validate_position_selection(position_input)
+  def validate_position_selection()
     position_input = gets.chomp
 
     # Checks if position input is a valid integer
+    # Need a way to repeatedly prompt user for valid input
+    # if they enter an invalid input
     if Integer(position_input, exception: false)
       return position_input.to_i
     end
@@ -48,11 +52,7 @@ class Board
     puts "Please select a position number between 1 - 9."
     position = validate_position_selection()
     
-    # position = gets.chomp.to_i
-
-    # Want to check that input for "position" is a valid selection and can be converted into an integer
-    # Or I could check if "position" contains letters
-    # if position.between?(1, 9) == false || 
+    binding.pry 
 
     #Arrays are zero-indexed, so we have to subtract 1 to get the actual array index
     #Dividing by the integer 3 since integer division discards any remainder and gives us the whole number
@@ -76,6 +76,7 @@ class Board
   end
 end
 
-# new_board = Board.new
 
-# new_board.draw_board
+new_board = Board.new
+new_board.draw_board
+new_board.update_board(2, "X")
