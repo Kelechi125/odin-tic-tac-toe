@@ -36,23 +36,37 @@ class Board
   end
 
   def validate_position_selection()
-    position_input = gets.chomp
+    # position_input = gets.chomp
 
-    # Checks if position input is a valid integer
+    # Checks if position_input is a valid integer
     # Need a way to repeatedly prompt user for valid input
     # if they enter an invalid input
+
+=begin
     if Integer(position_input, exception: false)
       return position_input.to_i
     end
+=end
+
+    position_input = nil
+
+    # Loop will repeatedly prompt user until they put a valid input
+    # that can be converted into an integer
+    until Integer(position_input, exception: false)
+      puts "Please select a position number between 1 - 9."
+      position_input = gets.chomp
+    end
+
+    return position_input.to_i
   end
 
   #The position parameter is the number in each cell chosen by a player
   #The symbol parameter is the player's symbol, either "X" or "O"
-  def update_board(position, symbol)
-    puts "Please select a position number between 1 - 9."
+  def update_board(symbol)
+    # puts "Please select a position number between 1 - 9."
     position = validate_position_selection()
     
-    binding.pry 
+    # binding.pry 
 
     #Arrays are zero-indexed, so we have to subtract 1 to get the actual array index
     #Dividing by the integer 3 since integer division discards any remainder and gives us the whole number
@@ -79,4 +93,7 @@ end
 
 new_board = Board.new
 new_board.draw_board
-new_board.update_board(2, "X")
+new_board.update_board("X")
+new_board.draw_board
+new_board.update_board("0")
+new_board.draw_board
