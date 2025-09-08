@@ -36,24 +36,18 @@ class Board
   end
 
   def validate_position_selection()
-    # position_input = gets.chomp
-
     # Checks if position_input is a valid integer
     # Need a way to repeatedly prompt user for valid input
     # if they enter an invalid input
 
-=begin
-    if Integer(position_input, exception: false)
-      return position_input.to_i
-    end
-=end
-
+    # puts "Please select a position number between 1 - 9."
+    
     position_input = nil
 
     # Loop will repeatedly prompt user until they put a valid input
     # that can be converted into an integer
     until Integer(position_input, exception: false)
-      puts "Please select a position number between 1 - 9."
+      # puts "Please select a position number between 1 - 9."
       position_input = gets.chomp
     end
 
@@ -63,10 +57,8 @@ class Board
   #The position parameter is the number in each cell chosen by a player
   #The symbol parameter is the player's symbol, either "X" or "O"
   def update_board(symbol)
-    # puts "Please select a position number between 1 - 9."
+    puts "Please select a position number between 1 - 9."
     position = validate_position_selection()
-    
-    # binding.pry 
 
     #Arrays are zero-indexed, so we have to subtract 1 to get the actual array index
     #Dividing by the integer 3 since integer division discards any remainder and gives us the whole number
@@ -80,7 +72,23 @@ class Board
     #Using the calculated row index and column index to access the specific element
     #within the @board array
     #We assign the player's symbol to this position
+
+    until (@board[row_index][col_index] == " ") do
+      puts "Select a different position"
+      position = validate_position_selection()
+      row_index = (position - 1) / 3
+      col_index = (position - 1) % 3
+    end
+
+=begin
+    if @board[row_index][col_index] != " "
+      puts "Select a different position"
+    else
+      @board[row_index][col_index] = symbol
+    end
+=end
     @board[row_index][col_index] = symbol
+    # p @board[row_index][col_index]
   end
 
   def check_win_conditions
@@ -90,10 +98,11 @@ class Board
   end
 end
 
-
+=begin
 new_board = Board.new
 new_board.draw_board
 new_board.update_board("X")
 new_board.draw_board
 new_board.update_board("0")
 new_board.draw_board
+=end
